@@ -47,6 +47,16 @@
             <p>Mensaje original: {{message}}</p>
             <p>Mensaje revertido: {{reverseMessage}}</p>
         </div>
+        <div id="conif">
+            <button @click="show">Mostar/esconder</button>
+            <div v-for="bandera in banderas">
+                <div v-for="msj in bandera">
+                    <div v-if="mostrar">
+                        <h1>{{msj}}</h1>                 
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
         <script src="index.js"></script>
     </body>

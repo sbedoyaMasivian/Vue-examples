@@ -72,6 +72,7 @@ new Vue({
     el: '#example'
   })
 
+//----------------------------COMPONENTE-------------------------------
 Vue.component("child", {
     props:['mensaje'],
     template: '<p>{{mensaje}}</p>'
@@ -85,7 +86,7 @@ const parent = new Vue({
     },
    
 })
-
+//----------------------------COMPONENTE---------------------------------
 const pc = new Vue({
     el: '#pc',
     data: {
@@ -94,6 +95,23 @@ const pc = new Vue({
     computed: {
         reverseMessage: function(){
             return this.message.split('').reverse('').join('')
+        }
+    }
+})
+
+const condicional = new Vue({
+    el: '#conif',
+    data:{
+        mostrar:false,
+        banderas: [
+            {bandera:'No soy bandera'},
+            {bandera:'Soy bandera'},
+            {bandera:'No soy bandera'}
+        ]     
+    },
+    methods: {
+        show: function() {
+            this.mostrar= !this.mostrar;
         }
     }
 })
