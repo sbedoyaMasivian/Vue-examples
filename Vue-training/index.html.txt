@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            {{title}}
+        </div>
+        <div id="msg">
+            Bienvenido {{name}}
+            <input type="text" v-model="name">
+        </div>
+        <div id="btn">
+            <div v-if="flag">
+               Es Bandera {{flag}}
+            </div>
+            <div v-else>
+                !bandera {{flag}}
+            </div>
+            <button @click="bandera">Click me</button>
+        </div>
+        <div id="count">
+            <h1>{{ count }}</h1>
+            <button @click="count += 1;">Increment</button>
+        </div>
+        <div id="ciclo">
+            <ul v-for="(persona,index) in personas" :key="index">
+                <li>{{index+=1}}. {{persona.name}}</li>
+            </ul>
+        </div>
+        <div id="for">
+            <p v-for="n in 10">{{n}}</p>
+        </div>
+        <div id="example">
+            <my-component></my-component>
+        </div>
+        <div id="padre">
+            <input v-model="mensaje">
+            <br>
+            <child v-bind:mensaje="mensaje"></child>
+        </div>
+        <div id="pc">
+            <p>Mensaje original: {{message}}</p>
+            <p>Mensaje revertido: {{reverseMessage}}</p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
