@@ -86,7 +86,7 @@ const parent = new Vue({
     },
    
 })
-//----------------------------COMPONENTE---------------------------------
+//-------------------------------------------------------------
 const pc = new Vue({
     el: '#pc',
     data: {
@@ -115,3 +115,39 @@ const condicional = new Vue({
         }
     }
 })
+
+//----------------------Filtros----------
+const nombreM = new Vue({
+    el: '#nombreM',
+    data:{
+        name: ''
+    },
+    filters:{
+        uppercase: function(nombre){
+            return nombre.toUpperCase()
+        }
+    }
+
+})
+//-----------------------------------------Componentes 2----------
+
+Vue.component('tabla', {
+    props:['myPersona'],
+    template: '<td>{{myPersona.name}}</td>'
+})
+
+const tabla= new Vue({
+    el: '#table',
+    data:{
+        personas:[
+            {name: 'Pedro'},
+            {name: 'Luisa'},
+            {name: 'Jose'},
+            {name: 'Ana'},
+            {name: 'Camilo'},
+            {name: 'Antonia'},
+        ]
+    }
+
+})
+----------------------------------------------------------------------
