@@ -73,6 +73,14 @@
                 </tr>
             </table>
         </div>
+        <div id="componentExample">
+            <p>{{ msj }}</p>
+            <button-click @cambiomsj="changeMsj"></button-click>
+        </div>
+        <div id="eventExample">
+            <input-event v-model='nombre' @submit="enviar" placeholder="Escribe tu nombre"></input-event>
+            <p v-bind:nombre="nombre">{{nombre}}</p>
+        </div>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
         <script src="index.js"></script>

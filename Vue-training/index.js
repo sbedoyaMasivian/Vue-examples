@@ -150,4 +150,64 @@ const tabla= new Vue({
     }
 
 })
-----------------------------------------------------------------------
+//----------------------------------------------------------------------
+
+Vue.component('buttonClick', {
+    template: '<button v-on:click="cambiomsj">Click me!</button>',
+    data: function () {
+        return {
+            mensaje: 'No click'
+        }
+    },
+    methods: {
+        cambiomsj: function () {
+            if( this.mensaje == 'No click'){
+                this.mensaje = 'click'
+            }else{
+                this.mensaje = 'No click'
+            }
+            this.$emit('cambiomsj')
+        }
+      },
+})
+new Vue({
+    el: '#componentExample',
+    data: {
+        msj: 'No click'
+    },
+    methods: {
+      changeMsj: function () {
+        if(this.msj == 'No click'){
+            this.msj = 'click'
+        }else{
+            this.msj = 'No click'
+        }
+      }
+    }
+  })
+//----------------------------------------------------------------------------
+Vue.component('inputEvent', {
+    template: '<input @keyup.enter="submit">',
+    data: function(){
+        return {
+            name:''
+        }
+    },
+    methods: {
+        submit: function(){
+            alert("Has dado click " + this.name)
+            this.$emit('submit')
+        }
+    }
+})
+new Vue({
+    el: '#eventExample',
+    data:{
+        nombre: ''
+    },
+    methods: {
+        enviar: function(){
+            alert("Has dado click " + this.nombre)
+        }
+    }
+})
