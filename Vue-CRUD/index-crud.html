@@ -14,13 +14,24 @@
                 <h3>{{mensaje}}</h3>
                 <form>
                     <div class="form-row">
-                        <div class="col">
-                            <input v-model="nombre" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
+                        <div v-if="bandera">
+                            <div class="col">
+                                <input v-model="nombre" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
+                            </div>
+                            <div class="col-4">
+                                <input v-model="edad" type="number" class="form-control" placeholder="Ingresa tu edad">
+                            </div>
+                            <button @click="crearPersona" type="button" class="btn btn-primary">Agregar persona</button>
                         </div>
-                        <div class="col-4">
-                            <input v-model="edad" type="number" class="form-control" placeholder="Ingresa tu edad">
-                        </div>
-                        <button @click="crearPersona" type="button" class="btn btn-primary">Agregar persona</button>
+                        <div v-else>
+                            <div class="col">
+                                <input v-model="nombreActualizar" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
+                            </div>
+                            <div class="col-4">
+                                <input v-model="edadActualizar" type="number" class="form-control" placeholder="Ingresa tu edad">
+                            </div>
+                            <button @click="actualizarPersona" type="button" class="btn btn-primary">Actualizar persona</button>
+                        </div>                        
                     </div>
                 </form>
                 <table class="table table-striped">
@@ -36,7 +47,11 @@
                             <th scope="row">{{index+=1}}</th>
                             <td>{{persona.nombre}}</td>
                             <td>{{persona.edad}}</td>
-                            <td><button type="button" class="btn btn-danger" @click="eliminarPersona(index)">X</button></td>
+                            
+                            <td>
+                                <button type="button" class="btn btn-warning"@click="actualizarPersona(index)">Editar</button>
+                                <button type="button" class="btn btn-danger" @click="eliminarPersona(index)">X</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
