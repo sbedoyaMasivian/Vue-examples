@@ -30,7 +30,7 @@ const count = new Vue({
         count: 0
     },
     watch: {
-        count: function(value) {
+        count: value => {
             if (value === 5) {
                 setTimeout(() => {
                 this.count = 0;
@@ -187,15 +187,15 @@ new Vue({
   })
 //----------------------------------------------------------------------------
 Vue.component('inputEvent', {
-    template: '<input @keyup.enter="submit">',
+    template: '<input v-model="nombre" @keyup.enter="submit">',
     data: function(){
         return {
-            name:''
+            nombre:''
         }
     },
     methods: {
         submit: function(){
-            alert("Has dado click " + this.name)
+            alert("Has dado enter " + this.nombre)
             this.$emit('submit')
         }
     }
@@ -205,9 +205,4 @@ new Vue({
     data:{
         nombre: ''
     },
-    methods: {
-        enviar: function(){
-            alert("Has dado click " + this.nombre)
-        }
-    }
 })
