@@ -3,7 +3,7 @@ new Vue({
     data:{
         mensaje: "Bienvenido a App-Vue",
         nombre: '',
-        edad: 0,
+        edad: Number,
         personas:[],
         bandera: false
     },
@@ -15,6 +15,9 @@ new Vue({
             }),
             this.nombre = '',
             this.edad = ''
+        },
+        eliminarPersona: function(index){
+            this.personas.splice(index);
         }
     }
 })

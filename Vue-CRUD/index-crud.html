@@ -36,6 +36,7 @@
                             <th scope="row">{{index+=1}}</th>
                             <td>{{persona.nombre}}</td>
                             <td>{{persona.edad}}</td>
+                            <td><button type="button" class="btn btn-danger" @click="eliminarPersona(index)">X</button></td>
                         </tr>
                     </tbody>
                 </table>
