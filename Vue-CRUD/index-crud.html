@@ -7,22 +7,44 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
 </head>
+<style>
+    .formulario{
+        border-top: 1px #dee2e6 solid;
+        border-bottom: 1px #dee2e6 solid;
+    }
+</style>
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10 text-center" id="app">
-                <h3>{{mensaje}}</h3>
-                <form class="m-2">
-                    <div class="form-row">                    
-                        <div class="col">
-                            <input v-model="nombre" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
+                <h3 class="mb-4">{{mensaje}}</h3>
+                <div v-if="bandera">
+                    <form class="m-2 p-4 formulario">
+                        <div class="form-row">                    
+                            <div class="col">
+                                <input v-model="nombre" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
+                            </div>
+                            <div class="col-4">
+                                <input v-model="edad" type="number" class="form-control" placeholder="Ingresa tu edad">
+                            </div>
+                            <button @click="crearPersona" type="button" class="btn btn-primary">Agregar persona</button>                                       
                         </div>
-                        <div class="col-4">
-                            <input v-model="edad" type="number" class="form-control" placeholder="Ingresa tu edad">
+                    </form>
+                </div>
+                <div v-else>
+                    <form class="m-2 p-4 formulario">
+                        <div class="form-row">                    
+                            <div class="col">
+                                <input v-model="nombreActualizar" type="text" class="form-control">
+                            </div>
+                            <div class="col-4">
+                                <input v-model="edadActualizar" type="number" class="form-control">
+                            </div>
+                            <button @click="actualizarPersona(index)" type="button" class="btn btn-primary">Actualizar persona</button>                                       
                         </div>
-                        <button @click="crearPersona" type="button" class="btn btn-primary">Agregar persona</button>                                       
-                    </div>
-                </form>
+                    </form>
+                </div>
+                
                 <div v-if = "banderaTabla">
                     <table class="table table-striped">
                         <thead>
@@ -47,17 +69,7 @@
                     </table>
                 </div>
                 <div v-if="bandera">
-                    <form class="m-2">
-                        <div class="form-row">                    
-                            <div class="col">
-                                <input v-model="nombreActualizar" type="text" class="form-control">
-                            </div>
-                            <div class="col-4">
-                                <input v-model="edadActualizar" type="number" class="form-control">
-                            </div>
-                            <button @click="actualizarPersona(index)" type="button" class="btn btn-primary">Actualizar persona</button>                                       
-                        </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
