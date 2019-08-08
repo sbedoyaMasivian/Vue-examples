@@ -12,49 +12,53 @@
         <div class="row justify-content-center">
             <div class="col-10 text-center" id="app">
                 <h3>{{mensaje}}</h3>
-                <form>
-                    <div class="form-row">
-                        <div v-if="bandera">
-                            <div class="col">
-                                <input v-model="nombre" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
-                            </div>
-                            <div class="col-4">
-                                <input v-model="edad" type="number" class="form-control" placeholder="Ingresa tu edad">
-                            </div>
-                            <button @click="crearPersona" type="button" class="btn btn-primary">Agregar persona</button>
+                <form class="m-2">
+                    <div class="form-row">                    
+                        <div class="col">
+                            <input v-model="nombre" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
                         </div>
-                        <div v-else>
-                            <div class="col">
-                                <input v-model="nombreActualizar" type="text" class="form-control" placeholder="Ingresa tu nombre completo">
-                            </div>
-                            <div class="col-4">
-                                <input v-model="edadActualizar" type="number" class="form-control" placeholder="Ingresa tu edad">
-                            </div>
-                            <button @click="actualizarPersona" type="button" class="btn btn-primary">Actualizar persona</button>
-                        </div>                        
+                        <div class="col-4">
+                            <input v-model="edad" type="number" class="form-control" placeholder="Ingresa tu edad">
+                        </div>
+                        <button @click="crearPersona" type="button" class="btn btn-primary">Agregar persona</button>                                       
                     </div>
                 </form>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Edad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(persona, index) in personas">
-                            <th scope="row">{{index+=1}}</th>
-                            <td>{{persona.nombre}}</td>
-                            <td>{{persona.edad}}</td>
-                            
-                            <td>
-                                <button type="button" class="btn btn-warning"@click="actualizarPersona(index)">Editar</button>
-                                <button type="button" class="btn btn-danger" @click="eliminarPersona(index)">X</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div v-if = "banderaTabla">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(persona, index) in personas">
+                                <th scope="row">{{persona.id}}</th>
+                                <td>{{persona.nombre}}</td>
+                                <td>{{persona.edad}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning"@click="formularioPersona(index)">Editar</button>
+                                    <button type="button" class="btn btn-danger" @click="eliminarPersona(index)">X</button>
+                                </td>                           
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div v-if="bandera">
+                    <form class="m-2">
+                        <div class="form-row">                    
+                            <div class="col">
+                                <input v-model="nombreActualizar" type="text" class="form-control">
+                            </div>
+                            <div class="col-4">
+                                <input v-model="edadActualizar" type="number" class="form-control">
+                            </div>
+                            <button @click="actualizarPersona(index)" type="button" class="btn btn-primary">Actualizar persona</button>                                       
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

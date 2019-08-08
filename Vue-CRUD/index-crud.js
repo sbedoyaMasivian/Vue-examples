@@ -4,27 +4,39 @@ new Vue({
         mensaje: "Bienvenido a App-Vue",
         nombre: '',
         edad: Number,
+        id: 0,
         personas:[],
-        bandera: true,
+        bandera: false,
         nombreActualizar: '',
-        edadActualizar:Number
+        edadActualizar:Number,
+        index:Number,
+        banderaTabla: false
     },
     methods:{
         crearPersona: function(){
             this.personas.push({
+                id: this.id+=1,
                 nombre: this.nombre,
-                edad: this.edad
+                edad: this.edad,
             }),
             this.nombre = '',
-            this.edad = ''
+            this.edad = '',
+            this.banderaTabla = true
         },
         eliminarPersona: function(index){
-            this.personas.splice(index);
+            console.log(index);
+            this.personas.splice(index,1);
         },
         actualizarPersona: function(index){
             this.personas[index].nombre = this.nombreActualizar,
             this.personas[index].edad = this.edadActualizar
-            this.bandera = true;
+            this.bandera = false;
+        },
+        formularioPersona: function(index){
+            this.nombreActualizar = this.personas[index].nombre,
+            this.edadActualizar = this.personas[index].edad,
+            this.index=index,
+            this.bandera = true; 
         },
         cambiarBandera: function(){
             this.bandera = !this.bandera
