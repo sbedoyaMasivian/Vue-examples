@@ -18,6 +18,9 @@
         <div class="row justify-content-center">
             <div class="col-10 text-center" id="app">
                 <h3 class="mb-4">{{mensaje}}</h3>
+                <div v-if="banderaAlert">
+
+                </div>
                 <div v-if="bandera">
                     <form class="m-2 p-4 formulario">
                         <div class="form-row">                    
@@ -67,9 +70,6 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div v-if="bandera">
-                    
                 </div>
             </div>
         </div>
