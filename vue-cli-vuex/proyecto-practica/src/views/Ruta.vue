@@ -1,11 +1,11 @@
 <template>
     <div class="Ruta">
         <h1>HOLA!</h1>
-        <NuevaRuta msj='Soy componente Ruta'></NuevaRuta>
+        <NuevaRuta></NuevaRuta>
     </div>
 </template>
 <script>
-import  NuevaRuta  from "@/components/NuevaRuta.vue"; 
+import  NuevaRuta from "@/components/NuevaRuta.vue"; 
 export default {
     name: 'Ruta',
     components:{
